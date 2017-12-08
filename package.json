@@ -1,0 +1,22 @@
+{
+  "name": "dui-react",
+  "version": "1.0.0",
+  "description": "design your ui --base on react",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieltao1993/dui-react.git"
+  },
+  "keywords": [
+    "dui"
+  ],
+  "author": "danielKong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danieltao1993/dui-react/issues"
+  },
+  "homepage": "https://github.com/danieltao1993/dui-react#readme"
+}
