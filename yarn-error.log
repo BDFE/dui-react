@@ -1,0 +1,50 @@
+Arguments: 
+  /usr/local/Cellar/node/8.9.1/bin/node /usr/local/bin/yarn add webpack
+
+PATH: 
+  /Library/Java/JavaVirtualMachines/jdk1.8.0_144/bin:/Users/kongwentao/anaconda/bin:/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin::
+
+Yarn version: 
+  0.27.5
+
+Node version: 
+  8.9.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "dui-react",
+    "version": "1.0.0",
+    "description": "design your ui --base on react",
+    "main": "index.js",
+    "scripts": {
+      "test": "test"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/danieltao1993/dui-react.git"
+    },
+    "keywords": [
+      "dui"
+    ],
+    "author": "danielKong",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/danieltao1993/dui-react/issues"
+    },
+    "homepage": "https://github.com/danieltao1993/dui-react#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: connect ETIMEDOUT 151.101.72.162:80
+      at Object._errnoException (util.js:1024:11)
+      at _exceptionWithHostPort (util.js:1046:20)
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1182:14)
