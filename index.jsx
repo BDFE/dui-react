@@ -1,4 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PostCss from './src/postcssdemos/PostCss.jsx'
 
-ReactDOM.render(<h1>我的世界</h1>, document.querySelector('#container'));
+ReactDOM.render(
+    <div>
+        <div>
+            <PostCss />
+        </div>
+    </div>
+    , document.querySelector('#container'));

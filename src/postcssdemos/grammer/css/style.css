@@ -1,0 +1,131 @@
+@import './import.css';
+
+@value colors: './color.css';
+@value first, second, third from colors;
+
+/*自定义属性的名称以“--”开头*/
+:root {
+ --text-color: black;
+ --hover-color: #050;
+}
+
+/*声明变量*/
+$my-color: #ccc;
+$column_condition: 2;
+
+ 
+body {
+ color: var(--text-color);
+}
+
+
+
+
+.container_size {
+    position:absolute;
+    width: 50px;
+    height: 30px;
+}
+
+ /*嵌套 Autoprefixer*/
+.container_1 {
+    display: flex; 
+    position:relative;
+    width: 140px;
+    height: 140px;
+    transform: rotate(30deg);
+
+    .container_2_1 {
+        /* background-color: rgb(255, 0, 0); */
+        background-color: first;
+        opacity: 0.5;
+
+        @if $column_condition == 2{
+            color:red;
+            width:200px;
+        }
+
+         /* &符,把父选择器复制到子选择器中 */
+        &::hover{
+            background:var(--hover-color)
+        }
+    }
+
+    .container_2_2 {
+        /* background-color: rgb(0, 0, 130); */
+        background-color: second;
+        opacity: 1;
+
+
+        &::hover{
+            background:$my-color;
+        }
+    }
+}
+
+.container_2 {
+    /*for 循环*/
+    .p_list_for{
+        position:fixed;
+        top:300px;
+        left:500px;
+        width:300px;
+        background:gray;
+
+        @for $i from 1 to 3 { 
+            p:nth-of-type($i) { 
+                width:calc( 20% / $i ); 
+                margin-left: calc( 100% / $i ); 
+                border:solid 1px black;
+            }
+        }
+    }
+
+     /*each循环*/
+    $list:red,blue,green;
+
+    .p_list_each{
+        display:inline;
+        @each $divspan in ($list){
+            .divspan-$(divspan) { 
+                width:100px;
+                height:100px;
+                background: $(divspan); 
+            }
+        }
+    }
+
+    .mixins{
+        // display:inline;
+        margin:10px;
+        padding:5px;
+        border:solid 1px yellow;
+    }
+
+    @define-mixin mixinFunc $className, $color {
+        .mixins .$(className) {
+                width:100px;
+                height:100px;
+                background: $color; 
+        } 
+    }
+
+    @mixin mixinFunc first,red;
+    @mixin mixinFunc second,green;
+
+
+    .define_extend{
+        border:solid 1px black;
+        background:green;
+        @define-extend rounded_button { 
+            width:100px;
+            border-radius: 0.5rem; 
+            padding: 1em; 
+            border-width: 0.0625rem;
+            border-style: solid; 
+        }
+
+        .blue_button { @extend rounded_button; border-color: #2F74D1; background-color: #3B8EFF; } 
+        .red_button { @extend rounded_button; border-color: #C41A1E; background-color: #FF2025; }
+    }
+}
