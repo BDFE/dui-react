@@ -18,9 +18,6 @@ body {
  color: var(--text-color);
 }
 
-
-
-
 .container_size {
     position:absolute;
     width: 50px;
@@ -125,7 +122,8 @@ body {
             border-style: solid; 
         }
 
-        .blue_button { @extend rounded_button; border-color: #2F74D1; background-color: #3B8EFF; } 
+        .blue_button { 
+            @extend rounded_button; border-color: #2F74D1; background-color: #3B8EFF; } 
         .red_button { @extend rounded_button; border-color: #C41A1E; background-color: #FF2025; }
     }
 }

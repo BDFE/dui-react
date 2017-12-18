@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+require('./css/style.css');
+// import classNames from './style.js'
 
 class PlugIns extends React.Component {
     constructor(args) {
@@ -19,6 +21,16 @@ class PlugIns extends React.Component {
         return (
             <div>
                 PlugIns
+                <div className='postcss-assets-png'>
+                </div >
+                {/* <div className={classNames['postcss-hash-classname']}>
+                    <div>postcss-hash-classname</div>
+                </div > */}
+                <div className='postcss-inline-svg'>
+                    postcss-inline-svg
+                </div >
+                <div className='postcss-inline-svg-2'>
+                </div >
             </div>
         );
     }
