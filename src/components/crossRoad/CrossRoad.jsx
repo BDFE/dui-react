@@ -7,7 +7,7 @@ class CrossRoad extends React.Component {
     constructor(args) {
         super(args);
         this.state = {
-            activeKey: this.props.activeKey || 0
+            activeKey: this.props.activeKey || 0,
         };
     }
 
@@ -30,20 +30,42 @@ class CrossRoad extends React.Component {
 
     render() {
         let self = this
-
+        let topIcons = self.props.topInfo.iconNames.map((name) => {
+            return <img src={`${self.props.iconBaseLoc}${name}.png`} />
+        })
+        let topRefNumSpans = self.props.topInfo.refNums.map((num) => {
+            return <div>{num}</div>
+        })
+        let topNumSpans = self.props.topInfo.nums.map((num) => {
+            return <div>{num}</div>
+        })
         return (
             <div class="cross_road_container">
                 <div class="top_road">
                     <div class="top_road_info_box">
-                        <div class="direction_images">
-                            <img src='../../../src/static/images/crossRoad/turnright.png' />
-                            <img src='../../../src/static/images/crossRoad/gostraight.png' />
-                            <img src='../../../src/static/images/crossRoad/turnleft.png' />
-                            <img src='../../../src/static/images/crossRoad/turnback.png' />
+                        <div class="top_ref_nums">
+                            {topRefNumSpans}
                         </div>
-                        <div class="direction_num">
+                        <div class="top_icons">
+                            {topIcons}
+                        </div>
+                        <div class="top_nums">
+                            {topNumSpans}
                         </div>
                     </div>
+                    <div class="top_reverse_road_info_box">
+                        <div class="top_ref_nums">
+                            {self.props.topInfo.reverseInfo.refNum}
+                        </div>
+                        <div class="top_icons">
+                            <img src={`${self.props.iconBaseLoc}${self.props.topInfo.reverseInfo.iconName}.png`} />
+                        </div>
+                        <div class="top_nums">
+                            {self.props.topInfo.reverseInfo.num}
+                        </div>
+
+                    </div>
+
                 </div>
                 <div class="left_road"></div>
                 <div class="right_road"></div>
@@ -55,7 +77,17 @@ class CrossRoad extends React.Component {
 }
 
 CrossRoad.defaultProps = {
-    data: {},
+    iconBaseLoc: '../../../src/static/images/crossRoad/',
+    topInfo: {
+        refNums: [12, 14, 14, 40],
+        iconNames: ['turnright', 'gostraight', 'turnleft', 'turnback'],
+        nums: [13, 33, 33, 12],
+        reverseInfo: {
+            refNum: 15,
+            iconName: 'gostraight',
+            num: 300,
+        }
+    },
     activeKey: 0,
 };
 
