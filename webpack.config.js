@@ -17,6 +17,16 @@ module.exports = {
         /* 在webpack2.0版本已经将 module.loaders 改为 module.rules 为了兼容性考虑以前的声明方法任然可用，同时链式loader(用!连接)只适用于module.loader
         同时-loader不可省略 */
         rules: [{
+                test: /\.less$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "less-loader" // compiles Less to CSS
+                }]
+            },
+            {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -29,26 +39,29 @@ module.exports = {
                         loader: 'postcss-loader',
                         // 在这里进行配置，也可以在postcss.config.js中进行配置，详情参考https://github.com/postcss/postcss-loader
                         options: {
-                            plugins: function () {
-                                return [
-                                    require('postcss-import')(),
-                                    require('precss')(),
-                                    require('autoprefixer')(),
-                                    require('postcss-assets')({
-                                        // loadPaths: ['**'], // ** 表示当前路径下所有文件夹和文件进行搜索。
-                                        loadPaths: ['src/static/images/', '/src/static/images/', '.static/images/']
-                                    }),
-                                    require('postcss-inline-svg')(),
-                                    // require('postcss-hash-classname')({
-                                    //     // hashType: 'md5',
-                                    //     // digestType: 'base32',
-                                    //     // maxLength: 6,
-                                    //     // outputName: 'yoyo',
-                                    //     // dist: 'dist',
-                                    //     // type: '.js'
-                                    // })
-                                ];
-                            }
+                            config: {
+                                path: 'postcss.config.js'
+                            },
+                            // plugins: function () {
+                            //     return [
+                            //         require('postcss-import')(),
+                            //         require('precss')(),
+                            //         require('autoprefixer')(),
+                            //         require('postcss-assets')({
+                            //             // loadPaths: ['**'], // ** 表示当前路径下所有文件夹和文件进行搜索。
+                            //             loadPaths: ['src/static/images/', '/src/static/images/', '.static/images/']
+                            //         }),
+                            //         require('postcss-inline-svg')(),
+                            //         // require('postcss-hash-classname')({
+                            //         //     // hashType: 'md5',
+                            //         //     // digestType: 'base32',
+                            //         //     // maxLength: 6,
+                            //         //     // outputName: 'yoyo',
+                            //         //     // dist: 'dist',
+                            //         //     // type: '.js'
+                            //         // })
+                            //     ];
+                            // }
                         }
                     }]
                 })
@@ -73,7 +86,42 @@ module.exports = {
             //     test: /\.svg/,
             //     loader: 'svg-url-loader&name=images/[name].[ext]',
             //     exclude: /node_modules/ //需要排除的目录
-            // }
+            // },
+            // {
+            //     test: /\.scss/,
+            //     // loader: 'style-loader!css!sass'
+            //     use: ['style-loader','css-loader','sass-loader']
+            // },
+            {
+                test: /\.scss$/,
+                use: [{
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            // sourceMap: true,
+                            // modules: true,
+                            // localIdentName: '[local]_[hash:base64:5]'
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            // sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                path: 'postcss.config.js' // 这个得在项目根目录创建此文件
+                            }
+                        }
+                    },
+                ]
+            },
         ]
     },
 

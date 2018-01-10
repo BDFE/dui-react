@@ -1,7 +1,9 @@
 import React from 'react';
-// import uncontrollable from 'uncontrollable'
-// import './index.less';
-require('./index.css');
+// import 'index.less';
+// import './index.scss';
+// require('./index.scss');
+require('./index.less');
+
 
 class CrossRoad extends React.Component {
     constructor(args) {
@@ -53,20 +55,20 @@ class CrossRoad extends React.Component {
                             {topNumSpans}
                         </div>
                     </div>
-                    <div class="top_reverse_road_info_box">
-                        <div class="top_ref_nums">
-                            {self.props.topInfo.reverseInfo.refNum}
-                        </div>
-                        <div class="top_icons">
-                            <img src={`${self.props.iconBaseLoc}${self.props.topInfo.reverseInfo.iconName}.png`} />
-                        </div>
-                        <div class="top_nums">
-                            {self.props.topInfo.reverseInfo.num}
-                        </div>
-
+                </div>
+                <div class="top_reverse_road_info_box">
+                    <div class="top_ref_num">
+                        <div> {self.props.topInfo.reverseInfo.refNum}</div>
+                    </div>
+                    <div class="top_icon">
+                        <img src={`${self.props.iconBaseLoc}${self.props.topInfo.reverseInfo.iconName}.png`} />
+                    </div>
+                    <div class="top_num">
+                        <div> {self.props.topInfo.reverseInfo.num}</div>
                     </div>
 
                 </div>
+
                 <div class="left_road"></div>
                 <div class="right_road"></div>
                 <div class="bottom_road"></div>

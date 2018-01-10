@@ -1,4 +1,3 @@
-
 .postcss-assets-png {
     background-image: resolve('afternoon.png');
     height: height("afternoon.png", 2);
@@ -6,6 +5,7 @@
     background-size: size("afternoon.png", 2);
     // color:blue;
 }
+
 .postcss-hash-classname {
     background:red;
     width:50px;
