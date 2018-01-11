@@ -1,3 +1,6 @@
+// @import 'index.less';
+@import 'vars.less';
+
 .line_container_base{
     position: absolute;
     bottom: 25%;
@@ -13,8 +16,11 @@
     height: auto;
     margin: auto;
     border-radius: 10%;
-    background-color:white;
-    border:1px solid #000;
+    background-color:@ref_num_block_bg_color;
+    border:@border_text_block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .icon_image_base{
     width: 20%;
@@ -23,22 +29,16 @@
     margin: auto; 
 }
 
-.road{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 60%;
-    height: 30%;
-    border-bottom: 1px solid gray;
-    border-right: 1px dashed gray;
+.road_base{
+    // .top_road_base;
 
     .road_info_box{
     position: relative;
     left: 50%;
     width: 50%;
     height: 100%;
-    background: rgb(142, 231, 142);
-    border-left: 1px solid gray;
+    background: @road_inner_bg_color;
+    border-left: @border_solid;
 
     .icons{
       .line_container_base;
@@ -62,14 +62,24 @@
 
         div{
            .text_block_base;
-            background-color:blue;
+            background-color:@num_block_bg_color;
+        }
+    }
+    .roadname{
+        .line_container_base;
+        bottom: 75%;
+        display: initial;
+        div{
+            // .text_block_base;
+            width: 100%;
+            text-align: center;
         }
     }
     }
 }
 
 
-.reverse_road_info_box{
+.reverse_road_info_box_base{
     display: inline-block;
     position: relative;
     left: 60%;
@@ -103,6 +113,7 @@
        bottom: 0%;
         div{
             .text_block_base;
+            background-color:@reverse_num_block_bg_color;
             width: 60%;
         }
    }

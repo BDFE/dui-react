@@ -9,7 +9,8 @@ class CrossRoad extends React.Component {
     constructor(args) {
         super(args);
         this.state = {
-            activeKey: this.props.activeKey || 0,
+            checkboxStatus: this.props.checkboxStatus,
+            activeKey: this.props.activeKey,
         };
     }
 
@@ -32,38 +33,98 @@ class CrossRoad extends React.Component {
 
     render() {
         let self = this
-        let topIcons = self.props.topInfo.iconNames.map((name) => {
-            return <img src={`${self.props.iconBaseLoc}${name}.png`} />
+        let topIcons = null;
+        let refNumSpans = null;
+        let numSpans = null;
+        let roadName = null;
+
+        if (!self.props.multiChose) {
+            refNumSpans = self.props.topInfo.refNums.map((num) => {
+                return <div>{num}</div>;
+            })
+            numSpans = self.props.topInfo.nums.map((num) => {
+                return <div>{num}</div>;
+            })
+        } else {
+            numSpans = self.props.topInfo.iconNames.map((name, index) => {
+                return (<div className='checkbox_div'>
+                    <input
+                        type="checkbox"
+                        style={{zoom:'150%',backgroundColor:'white'}}
+                        name={name}
+                        // value={index}
+                        checked={self.state.checkboxStatus[index]}
+                        onClick={(e) => {
+                            const checkboxStatus = self.state.checkboxStatus
+                            checkboxStatus[index] = e.target.checked;
+                            self.setState({ checkboxStatus }, () => {
+                                // console.log('dd', checkboxStatus);
+                                self.props.onCheckboxChange && self.props.onCheckboxChange(checkboxStatus);
+                            });
+                        }}
+                    />
+                </div>);
+            })
+        }
+
+        roadName = self.props.roadName.split('').map((c) => {
+            return <span>{c}</span>;
         })
-        let topRefNumSpans = self.props.topInfo.refNums.map((num) => {
-            return <div>{num}</div>
+        topIcons = self.props.topInfo.iconNames.map((name) => {
+            return <img src={`${self.props.iconBaseLoc}${name}.png`} />;
         })
-        let topNumSpans = self.props.topInfo.nums.map((num) => {
-            return <div>{num}</div>
-        })
+        let rotate_class_name = ' ';
+        switch (this.props.direction) {
+            case 'top': {
+                rotate_class_name = 'top_rotate ';
+                break;
+            }
+            case 'bottom': {
+                rotate_class_name = 'bottom_rotate ';
+                break;
+            }
+            case 'left': {
+                rotate_class_name = 'left_rotate ';
+                break;
+            }
+            case 'right': {
+                rotate_class_name = 'right_rotate ';
+                break;
+            }
+            default: break;
+        }
+
         return (
-            <span>
+            <span onClick={(e) => {
+                console.log(self.props.direction);
+                self.props.onClick && self.props.onClick(e);
+            }}>
                 <div class="road">
                     <div class="road_info_box">
-                        <div class="ref_nums">
-                            {topRefNumSpans}
+                        <div class={`${rotate_class_name}ref_nums`}>
+                            {refNumSpans}
                         </div>
                         <div class="icons">
                             {topIcons}
                         </div>
-                        <div class="nums">
-                            {topNumSpans}
+                        <div class={`${rotate_class_name}nums`}>
+                            {numSpans}
+                        </div>
+                        <div class={`roadname_${rotate_class_name}roadname`}>
+                            <div>
+                                {roadName}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="reverse_road_info_box">
-                    <div class="ref_num">
+                <div class="reverse_road">
+                    <div class={`${rotate_class_name}ref_num`}>
                         <div> {self.props.topInfo.reverseInfo.refNum}</div>
                     </div>
                     <div class="icon">
                         <img src={`${self.props.iconBaseLoc}${self.props.topInfo.reverseInfo.iconName}.png`} />
                     </div>
-                    <div class="num">
+                    <div class={`${rotate_class_name}num`}>
                         <div> {self.props.topInfo.reverseInfo.num}</div>
                     </div>
                 </div>
@@ -85,7 +146,10 @@ CrossRoad.defaultProps = {
             num: 300,
         }
     },
+    multiChose: false,
+    roadName: '信息路与上地五街',
     activeKey: 0,
+    checkboxStatus: [false, false, false, false],
 };
 
 export default CrossRoad;

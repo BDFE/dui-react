@@ -1,10 +1,6 @@
 import React from 'react';
 import TopRoad from './topRoad/TopRoad.jsx'
-// import 'index.less';
-// import './index.scss';
-// require('./index.scss');
 require('./index.less');
-
 
 class CrossRoad extends React.Component {
     constructor(args) {
@@ -35,14 +31,41 @@ class CrossRoad extends React.Component {
         let self = this
 
         return (
-            <div class="cross_road_container">
-                <TopRoad
-                    iconBaseLoc={self.props.iconBaseLoc}
-                    topInfo={self.props.topInfo}
-                />
-                <div class="left_road"></div>
-                <div class="right_road"></div>
-                <div class="bottom_road"></div>
+            <div class="road_bord">
+                <div class="top_road_container">
+                    <TopRoad
+                        iconBaseLoc={self.props.iconBaseLoc}
+                        infos={self.props.topInfo}
+                        direction='top'
+                        multiChose='true'
+                        onCheckboxChange={(value)=>{
+                            console.log('new checkbox value',value);
+                        }}
+                    />
+                   
+                </div>
+                <div class="bottom_road_container">
+                    <TopRoad
+                        iconBaseLoc={self.props.iconBaseLoc}
+                        infos={self.props.topInfo}
+                        direction='bottom'
+                    />
+                </div>
+
+                <div class="right_road_container">
+                    <TopRoad
+                        iconBaseLoc={self.props.iconBaseLoc}
+                        infos={self.props.topInfo}
+                        direction='right'
+                    />
+                </div>
+                <div class="left_road_container">
+                    <TopRoad
+                        iconBaseLoc={self.props.iconBaseLoc}
+                        infos={self.props.topInfo}
+                        direction='left'
+                    />
+                </div>
             </div>
         );
     }
