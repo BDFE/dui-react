@@ -17,6 +17,15 @@ module.exports = {
         /* 在webpack2.0版本已经将 module.loaders 改为 module.rules 为了兼容性考虑以前的声明方法任然可用，同时链式loader(用!连接)只适用于module.loader
         同时-loader不可省略 */
         rules: [{
+                test: /\.js[x]?$/,
+                // loader: 'babel-loader?presets[]=es2015&presets[]=react', //此处不能用use，不知道为啥
+                exclude: /node_modules/ //需要排除的目录
+                loader:'babel-loader',
+                query:{
+                    // presets:['es2015','react']
+                    presets:['env', 'react', 'stage-0']
+                }
+            }, {
                 test: /\.less$/,
                 use: [{
                     loader: "style-loader" // creates style nodes from JS strings
@@ -73,10 +82,6 @@ module.exports = {
                         loader: "postcss-loader",
                     }, 'stylus-loader']
                 })
-            }, {
-                test: /\.js[x]?$/,
-                loader: 'babel-loader?presets[]=es2015&presets[]=react', //此处不能用use，不知道为啥
-                exclude: /node_modules/ //需要排除的目录
             },
             // {
             //     test: /\.(png|jpg|gif)$/,

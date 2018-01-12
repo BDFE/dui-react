@@ -39,15 +39,14 @@ class ButtonGroup extends React.Component {
                     if (i == this.props.activeKey) {
                         className += ' active';
                     }
-                    return <div
-                        key={key}
+                    return (<div key={key}
                         // style={this.props.buttonStyle || { color: 'white' }}
                         className={className}
                         value={item.value}
                         onClick={self.onClick.bind(this, i, item)}
                     >
                         {item[i]}
-                    </div >;
+                    </div >);
                 }
             });
         }
