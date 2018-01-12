@@ -1,15 +1,10 @@
 {
   "name": "dui-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "design your ui --base on react",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "build:lib": "rm -rf lib && npm run babel:build",
-    "babel:build": "babel src -d lib",
-    "build:dist": "webpack",
-    "build": "npm run build:lib && npm run build:dist && npm run examples:build",
-    "prepublish": "npm run build",
-    "examples:build": "webpack --config ./webpack.config.js",
+    "pub": "webpack --config ./webpack.publish.config.js",
     "start": "webpack-dev-server --config ./webpack.config.js --progress --colors --host 0.0.0.0 --port 8000 --hot --inline"
   },
   "repository": {
@@ -29,6 +24,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",

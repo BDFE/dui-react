@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Test from 'dui-react';
+// import Test from 'dui-react';
 require('./css/style.css');
 // import classNames from './style.js'
 
@@ -33,7 +33,7 @@ class PlugIns extends React.Component {
                 <div className='postcss-inline-svg-2'>
                 </div >
                 <div>
-                    <Test />
+                    {/* <Test /> */}
                 </div>
             </div>
         );
