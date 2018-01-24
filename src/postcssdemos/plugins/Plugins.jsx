@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Test from 'dui-react';
+import {test
+
+} from '../../../lib/index.js';
 require('./css/style.css');
 // import classNames from './style.js'
-
+console.log(1111, require('../../../lib/index.js'));
 class PlugIns extends React.Component {
     constructor(args) {
         super(args);
@@ -34,6 +36,9 @@ class PlugIns extends React.Component {
                 </div >
                 <div>
                     {/* <Test /> */}
+                </div>
+                <div>
+                    <CrossRoad />
                 </div>
             </div>
         );

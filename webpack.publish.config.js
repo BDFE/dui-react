@@ -10,7 +10,9 @@ module.exports = {
         // path: path.resolve(__dirname, 'dist'), // 指定打包之后的文件夹
         // publicPath: 'src/static/images', //指定资源文件引用的目录
         // filename: 'bundle.js' // 指定打包为一个文件 bundle.js
-        filename: 'lib/index.js' // 可以打包为多个文件
+        filename: 'lib/index.js', // 可以打包为多个文件
+        libraryTarget: 'umd',
+        library: 'lib',
     },
     // devtool: 'eval-source-map',
     module: {
