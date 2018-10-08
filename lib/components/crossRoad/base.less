@@ -1,0 +1,121 @@
+// @import 'index.less';
+@import 'vars.less';
+
+.line_container_base{
+    position: absolute;
+    bottom: 25%;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    text-align: center;
+    vertical-align: middle;
+}
+.text_block_base{
+    display: inline-block;
+    width: 20%;
+    height: auto;
+    margin: auto;
+    border-radius: 10%;
+    background-color:@ref_num_block_bg_color;
+    border:@border_text_block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon_image_base{
+    width: 20%;
+    height: auto;
+    border-radius: 10%;
+    margin: auto; 
+}
+
+.road_base{
+    // .top_road_base;
+
+    .road_info_box{
+    position: relative;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background: @road_inner_bg_color;
+    border-left: @border_solid;
+
+    .icons{
+      .line_container_base;
+        
+        img{
+            .icon_image_base;
+        }
+    }
+    
+    .ref_nums{
+        .line_container_base;
+        bottom:50%;
+
+        div{
+            .text_block_base;
+        }
+    }
+    .nums{
+        .line_container_base;
+        bottom:0%;
+
+        div{
+           .text_block_base;
+            background-color:@num_block_bg_color;
+        }
+    }
+    .roadname{
+        .line_container_base;
+        bottom: 75%;
+        display: initial;
+        div{
+            // .text_block_base;
+            width: 100%;
+            text-align: center;
+        }
+    }
+    }
+}
+
+
+.reverse_road_info_box_base{
+    display: inline-block;
+    position: relative;
+    left: 60%;
+    width: 10%;
+    height: 30%;
+
+    .block{
+        .line_container_base;
+        width: 100%;
+   }
+
+   .icon{
+      .block;
+      bottom: 25%;
+      
+       img{
+           .icon_image_base;
+           width: 60%;
+       }
+   }
+   .ref_num{
+       .block;
+       bottom: 50%;
+        div{
+            .text_block_base;
+            width: 60%;
+        }
+   }
+   .num{
+       .block;
+       bottom: 0%;
+        div{
+            .text_block_base;
+            background-color:@reverse_num_block_bg_color;
+            width: 60%;
+        }
+   }
+}
+

@@ -8,7 +8,6 @@ import Test from './src/components/test/Test.jsx'
 
 import { browserHistory, hashHistory, BrowserRouter, Route, Switch } from 'react-router-dom';
 
-
 ReactDOM.render(
     (
         <BrowserRouter history={browserHistory}>

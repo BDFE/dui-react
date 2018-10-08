@@ -1,0 +1,75 @@
+@import '../base.less';
+@import '../index.less';
+
+
+.reverse_road:extend(.reverse_road_info_box_base all){
+    pointer-events: auto;
+    .top_rotate{
+        transform: @top_text_rotate;
+    }
+    .bottom_rotate{
+        transform: @bottom_text_rotate;
+    }
+    .left_rotate{
+        transform: @left_text_rotate;
+    }
+    .right_rotate{
+        transform: @right_text_rotate;
+    }
+    .icon img{
+        transform: @reverse_icon_rotate;
+    }
+}
+
+.road:extend(.road_base all){
+    pointer-events: auto;
+    .top_road_base;
+    // .road_info_box .nums div {
+    //     transform: @left_text_rotate;
+    // }
+    // .road_info_box .ref_nums div {
+    //     transform: @left_text_rotate;
+    // }
+    .checkbox_div{
+        background: none !important;
+        border:none !important;
+    }
+    .top_rotate div{
+        transform: @top_text_rotate;
+    }
+    .bottom_rotate div{
+        transform: @bottom_text_rotate;
+    }
+    .left_rotate div{
+        transform: @left_text_rotate;
+    }
+    .right_rotate div{
+        transform: @right_text_rotate;
+    }
+    .roadname_right_rotate{
+        div{
+           span{
+            display: inline-block;
+            transform: @right_text_rotate;
+           }
+        }
+    }
+    .roadname_left_rotate,{
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row-reverse;
+            span{
+             display: inline-block;
+             transform: @left_text_rotate;
+            }
+         }
+    }
+    .roadname_bottom_rotate{
+        div{
+            transform: @bottom_text_rotate;
+        }
+        
+    }
+}

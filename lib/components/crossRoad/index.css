@@ -1,0 +1,86 @@
+.road_bord {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  background: gray;
+  border: 1px solid black;
+}
+.road_container_base {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+}
+.top_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+}
+.bottom_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+  transform: rotate(180deg);
+}
+.left_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+  transform: rotate(-90deg);
+}
+.right_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+  transform: rotate(90deg);
+}
+.top_road_base {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 30%;
+  border-bottom: 1px solid black;
+  border-right: 1px dashed black;
+}
+.left_road_base {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 30%;
+  height: 60%;
+  border-right: 1px solid black;
+  border-top: 1px dashed black;
+}
+.right_road_base {
+  position: absolute;
+  left: 70%;
+  top: 0;
+  width: 30%;
+  height: 60%;
+  border-left: 1px solid black;
+  border-bottom: 1px dashed black;
+}
+.bottom_road_base {
+  position: absolute;
+  left: 40%;
+  top: 70%;
+  width: 60%;
+  height: 30%;
+  border-top: 1px solid black;
+  border-left: 1px dashed black;
+}

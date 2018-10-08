@@ -1,0 +1,75 @@
+@import 'vars.less';
+
+.road_bord{
+    position: relative;
+    height: 500px;
+    width: 500px;
+    background: @main_bord_bg_color;
+    border: @main_bord_border;
+}
+
+.road_container_base{
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color:@road_outer_bg_color;
+    pointer-events: none;
+}
+
+.top_road_container{
+    .road_container_base;
+}
+
+.bottom_road_container{
+    .road_container_base;
+    transform: rotate(180deg);
+}
+.left_road_container{
+    .road_container_base;
+    transform: rotate(-90deg);
+}
+.right_road_container{
+    .road_container_base;
+    transform: rotate(90deg);
+}
+
+.top_road_base{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 30%;
+    border-bottom: @border_solid;
+    border-right:  @border_dashed;
+}
+
+.left_road_base{
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 30%;
+    height: 60%;
+    border-right: @border_solid;
+    border-top:  @border_dashed;
+}
+
+.right_road_base{
+    position: absolute;
+    left: 70%;
+    top: 0;
+    width: 30%;
+    height: 60%;
+    border-left: @border_solid;
+    border-bottom:  @border_dashed;
+}
+
+.bottom_road_base{
+    position: absolute;
+    left: 40%;
+    top: 70%;
+    width: 60%;
+    height: 30%;
+    border-top: @border_solid;
+    border-left:  @border_dashed;
+}

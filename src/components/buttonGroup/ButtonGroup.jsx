@@ -1,13 +1,10 @@
 import React from 'react';
-import uncontrollable from 'uncontrollable'
+import uncontrollable from 'uncontrollable';
 import './index.less';
 
 class ButtonGroup extends React.Component {
     constructor(args) {
         super(args);
-        this.state = {
-            activeKey: this.props.activeKey || 0
-        };
     }
 
     componentDidMount() {
@@ -20,42 +17,56 @@ class ButtonGroup extends React.Component {
             onChange(index);
             let fn = this.props.onClick;
             fn && fn(index, item);
-        } else {
-            this.setState({
-                activeKey: index
-            });
         }
     }
 
     render() {
-        let self = this
+        let self = this;
         let listTypes = this.props.data;
-        let radios = [];
+        let doms = [];
+
         if (listTypes) {
-            radios = listTypes.map((item, key) => {
+            listTypes.map((item, index) => {
+                let buttonStyle = {};
+                this.props.buttonStyle ? Object.assign(buttonStyle, this.props.buttonStyle) : '';
+                self.props.defaultBgColor ? buttonStyle['background'] = self.props.defaultBgColor : '';
+                self.props.defaultFontColor ? buttonStyle['color'] = self.props.defaultFontColor : '';
+
                 for (let i in item) {
                     var className = 'radio';
-                    // console.log(i);
                     if (i == this.props.activeKey) {
                         className += ' active';
+                        self.props.activeBgColor ? buttonStyle['background'] = self.props.activeBgColor : '';
+                        self.props.activeFontColor ? buttonStyle['color'] = self.props.activeFontColor : '';
                     }
-                    return (<div key={key}
-                        // style={this.props.buttonStyle || { color: 'white' }}
+                    let radio = <div
+                        key={JSON.stringify(item) + index}
                         className={className}
+                        style={buttonStyle}
                         value={item.value}
                         onClick={self.onClick.bind(this, i, item)}
                     >
                         {item[i]}
-                    </div >);
+                    </div >;
+                    doms.push(radio);
+                }
+                if (self.props.divider) {
+                    if (index !== listTypes.length - 1) {
+                        doms.push(self.props.divider);
+                    }
                 }
             });
+        }
+        let containerStyle = this.props.groupStyle;
+        if (!containerStyle.background) {
+            containerStyle.background = this.props.defaultBgColor;
         }
         return (
             <div
                 className="button_group"
-                style={this.props.groupStyle || { color: 'white' }}
+                style={containerStyle || { color: '#333' }}
             >
-                {radios}
+                {doms}
             </div>
         );
     }
@@ -66,8 +77,8 @@ ButtonGroup.defaultProps = {
     data: {},
     activeKey: 0,
 };
-// export default ButtonGroup;
 
+// export default ButtonGroup;
 export default uncontrollable(ButtonGroup, {
     activeKey: 'onChange'
 });

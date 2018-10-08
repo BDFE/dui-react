@@ -1,0 +1,353 @@
+.line_container_base {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+}
+.text_block_base {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  border-radius: 10%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon_image_base {
+  width: 20%;
+  height: auto;
+  border-radius: 10%;
+  margin: auto;
+}
+.road_base .road_info_box,
+.road .road_info_box {
+  position: relative;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: #cacaee;
+  border-left: 1px solid black;
+}
+.road_base .road_info_box .icons,
+.road .road_info_box .icons {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+}
+.road_base .road_info_box .icons img,
+.road .road_info_box .icons img {
+  width: 20%;
+  height: auto;
+  border-radius: 10%;
+  margin: auto;
+}
+.road_base .road_info_box .ref_nums,
+.road .road_info_box .ref_nums {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  bottom: 50%;
+}
+.road_base .road_info_box .ref_nums div,
+.road .road_info_box .ref_nums div {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  border-radius: 10%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.road_base .road_info_box .nums,
+.road .road_info_box .nums {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  bottom: 0%;
+}
+.road_base .road_info_box .nums div,
+.road .road_info_box .nums div {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  border-radius: 10%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #82ec82;
+}
+.road_base .road_info_box .roadname,
+.road .road_info_box .roadname {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  bottom: 75%;
+  display: initial;
+}
+.road_base .road_info_box .roadname div,
+.road .road_info_box .roadname div {
+  width: 100%;
+  text-align: center;
+}
+.reverse_road_info_box_base,
+.reverse_road {
+  display: inline-block;
+  position: relative;
+  left: 60%;
+  width: 10%;
+  height: 30%;
+}
+.reverse_road_info_box_base .block,
+.reverse_road .block {
+  position: absolute;
+  bottom: 25%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+.reverse_road_info_box_base .icon,
+.reverse_road .icon {
+  position: absolute;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  bottom: 25%;
+}
+.reverse_road_info_box_base .icon img,
+.reverse_road .icon img {
+  width: 20%;
+  height: auto;
+  border-radius: 10%;
+  margin: auto;
+  width: 60%;
+}
+.reverse_road_info_box_base .ref_num,
+.reverse_road .ref_num {
+  position: absolute;
+  bottom: 25%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  bottom: 50%;
+}
+.reverse_road_info_box_base .ref_num div,
+.reverse_road .ref_num div {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  border-radius: 10%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+.reverse_road_info_box_base .num,
+.reverse_road .num {
+  position: absolute;
+  bottom: 25%;
+  height: 25%;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+  bottom: 0%;
+}
+.reverse_road_info_box_base .num div,
+.reverse_road .num div {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  margin: auto;
+  border-radius: 10%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #db53ec;
+  width: 60%;
+}
+.road_bord {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  background: gray;
+  border: 1px solid black;
+}
+.road_container_base {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+}
+.top_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+}
+.bottom_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+  transform: rotate(180deg);
+}
+.left_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+  transform: rotate(-90deg);
+}
+.right_road_container {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  pointer-events: none;
+  transform: rotate(90deg);
+}
+.top_road_base {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 30%;
+  border-bottom: 1px solid black;
+  border-right: 1px dashed black;
+}
+.left_road_base {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 30%;
+  height: 60%;
+  border-right: 1px solid black;
+  border-top: 1px dashed black;
+}
+.right_road_base {
+  position: absolute;
+  left: 70%;
+  top: 0;
+  width: 30%;
+  height: 60%;
+  border-left: 1px solid black;
+  border-bottom: 1px dashed black;
+}
+.bottom_road_base {
+  position: absolute;
+  left: 40%;
+  top: 70%;
+  width: 60%;
+  height: 30%;
+  border-top: 1px solid black;
+  border-left: 1px dashed black;
+}
+.reverse_road {
+  pointer-events: auto;
+}
+.reverse_road .top_rotate {
+  transform: rotate(0deg);
+}
+.reverse_road .bottom_rotate {
+  transform: rotate(180deg);
+}
+.reverse_road .left_rotate {
+  transform: rotate(90deg);
+}
+.reverse_road .right_rotate {
+  transform: rotate(-90deg);
+}
+.reverse_road .icon img {
+  transform: rotate(180deg);
+}
+.road {
+  pointer-events: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 30%;
+  border-bottom: 1px solid black;
+  border-right: 1px dashed black;
+}
+.road .checkbox_div {
+  background: none !important;
+  border: none !important;
+}
+.road .top_rotate div {
+  transform: rotate(0deg);
+}
+.road .bottom_rotate div {
+  transform: rotate(180deg);
+}
+.road .left_rotate div {
+  transform: rotate(90deg);
+}
+.road .right_rotate div {
+  transform: rotate(-90deg);
+}
+.road .roadname_right_rotate div span {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+.road .roadname_left_rotate div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+.road .roadname_left_rotate div span {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+.road .roadname_bottom_rotate div {
+  transform: rotate(180deg);
+}

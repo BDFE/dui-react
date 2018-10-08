@@ -12,116 +12,126 @@ module.exports = {
         // filename: 'bundle.js' // 指定打包为一个文件 bundle.js
         filename: '[name].js' // 可以打包为多个文件
     },
+    resolve: {
+        modules: ['node_modules', path.resolve(__dirname, 'src/app')],
+        alias: {
+            'static': path.join(__dirname, "src/static"),
+            'config': path.join(__dirname, "src/config"),
+            'lib': path.join(__dirname, "src/lib"),
+            'components': path.join(__dirname, "src/components"),
+        }
+    },
+    
     // devtool: 'eval-source-map',
     module: {
         /* 在webpack2.0版本已经将 module.loaders 改为 module.rules 为了兼容性考虑以前的声明方法任然可用，同时链式loader(用!连接)只适用于module.loader
         同时-loader不可省略 */
         rules: [{
-                test: /\.less$/,
+            test: /\.less$/,
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "less-loader" // compiles Less to CSS
+            }]
+        },
+        {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
                 use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
+                    loader: 'css-loader',
+                    options: {
+                        // modules: true // 设置css模块化,详情参考https://github.com/css-modules/css-modules
+                    }
                 }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
+                    loader: 'postcss-loader',
+                    // 在这里进行配置，也可以在postcss.config.js中进行配置，详情参考https://github.com/postcss/postcss-loader
+                    options: {
+                        config: {
+                            path: 'postcss.config.js'
+                        },
+                        // plugins: function () {
+                        //     return [
+                        //         require('postcss-import')(),
+                        //         require('precss')(),
+                        //         require('autoprefixer')(),
+                        //         require('postcss-assets')({
+                        //             // loadPaths: ['**'], // ** 表示当前路径下所有文件夹和文件进行搜索。
+                        //             loadPaths: ['src/static/images/', '/src/static/images/', '.static/images/']
+                        //         }),
+                        //         require('postcss-inline-svg')(),
+                        //         // require('postcss-hash-classname')({
+                        //         //     // hashType: 'md5',
+                        //         //     // digestType: 'base32',
+                        //         //     // maxLength: 6,
+                        //         //     // outputName: 'yoyo',
+                        //         //     // dist: 'dist',
+                        //         //     // type: '.js'
+                        //         // })
+                        //     ];
+                        // }
+                    }
                 }]
+            })
+        }, {
+            test: /\.styl(us)?$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', {
+                    loader: "postcss-loader",
+                }, 'stylus-loader']
+            })
+        }, {
+            test: /\.js[x]?$/,
+            loader: 'babel-loader?presets[]=es2015&presets[]=react', //此处不能用use，不知道为啥
+            exclude: /node_modules/ //需要排除的目录
+        },
+        // {
+        //     test: /\.(png|jpg|gif)$/,
+        //     loader: 'url-loader?limit=8192&name=images/[name].[ext]', //此处不能用use，不知道为啥
+        //     exclude: /node_modules/ //需要排除的目录
+        // }, {
+        //     test: /\.svg/,
+        //     loader: 'svg-url-loader&name=images/[name].[ext]',
+        //     exclude: /node_modules/ //需要排除的目录
+        // },
+        // {
+        //     test: /\.scss/,
+        //     // loader: 'style-loader!css!sass'
+        //     use: ['style-loader','css-loader','sass-loader']
+        // },
+        {
+            test: /\.scss$/,
+            use: [{
+                loader: 'style-loader'
             },
             {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            // modules: true // 设置css模块化,详情参考https://github.com/css-modules/css-modules
-                        }
-                    }, {
-                        loader: 'postcss-loader',
-                        // 在这里进行配置，也可以在postcss.config.js中进行配置，详情参考https://github.com/postcss/postcss-loader
-                        options: {
-                            config: {
-                                path: 'postcss.config.js'
-                            },
-                            // plugins: function () {
-                            //     return [
-                            //         require('postcss-import')(),
-                            //         require('precss')(),
-                            //         require('autoprefixer')(),
-                            //         require('postcss-assets')({
-                            //             // loadPaths: ['**'], // ** 表示当前路径下所有文件夹和文件进行搜索。
-                            //             loadPaths: ['src/static/images/', '/src/static/images/', '.static/images/']
-                            //         }),
-                            //         require('postcss-inline-svg')(),
-                            //         // require('postcss-hash-classname')({
-                            //         //     // hashType: 'md5',
-                            //         //     // digestType: 'base32',
-                            //         //     // maxLength: 6,
-                            //         //     // outputName: 'yoyo',
-                            //         //     // dist: 'dist',
-                            //         //     // type: '.js'
-                            //         // })
-                            //     ];
-                            // }
-                        }
-                    }]
-                })
-            }, {
-                test: /\.styl(us)?$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader', {
-                        loader: "postcss-loader",
-                    }, 'stylus-loader']
-                })
-            }, {
-                test: /\.js[x]?$/,
-                loader: 'babel-loader?presets[]=es2015&presets[]=react', //此处不能用use，不知道为啥
-                exclude: /node_modules/ //需要排除的目录
+                loader: 'css-loader',
+                options: {
+                    // sourceMap: true,
+                    // modules: true,
+                    // localIdentName: '[local]_[hash:base64:5]'
+                }
             },
-            // {
-            //     test: /\.(png|jpg|gif)$/,
-            //     loader: 'url-loader?limit=8192&name=images/[name].[ext]', //此处不能用use，不知道为啥
-            //     exclude: /node_modules/ //需要排除的目录
-            // }, {
-            //     test: /\.svg/,
-            //     loader: 'svg-url-loader&name=images/[name].[ext]',
-            //     exclude: /node_modules/ //需要排除的目录
-            // },
-            // {
-            //     test: /\.scss/,
-            //     // loader: 'style-loader!css!sass'
-            //     use: ['style-loader','css-loader','sass-loader']
-            // },
             {
-                test: /\.scss$/,
-                use: [{
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            // sourceMap: true,
-                            // modules: true,
-                            // localIdentName: '[local]_[hash:base64:5]'
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            // sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true,
-                            config: {
-                                path: 'postcss.config.js' // 这个得在项目根目录创建此文件
-                            }
-                        }
-                    },
-                ]
+                loader: 'sass-loader',
+                options: {
+                    // sourceMap: true
+                }
             },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    sourceMap: true,
+                    config: {
+                        path: 'postcss.config.js' // 这个得在项目根目录创建此文件
+                    }
+                }
+            },
+            ]
+        },
         ]
     },
 
