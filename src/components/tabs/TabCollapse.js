@@ -5,8 +5,8 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import uncontrollable from 'uncontrollable';
-import TabPane from './TabPane.jsx';
-import Tabs from './Tabs.jsx';
+import TabPane from './TabPane.js';
+import Tabs from './Tabs.js';
 import './index.less';
 import _style from './index.less';
 let styles = {};

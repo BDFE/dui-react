@@ -1,5 +1,5 @@
 import React from 'react';
-import TopRoad from './topRoad/TopRoad.jsx'
+import TopRoad from './topRoad/TopRoad.js'
 require('./index.less');
 
 class CrossRoad extends React.Component {

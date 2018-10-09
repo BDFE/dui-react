@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import './index.less';
-import TabPane from './TabPane.jsx';
+import TabPane from './TabPane.js';
 
 class Tabs extends React.Component {
     constructor(args) {

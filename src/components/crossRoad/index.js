@@ -1,3 +1,3 @@
-import CrossRoad from './CrossRoad.jsx';
+import CrossRoad from './CrossRoad.js';
 
 export default CrossRoad;

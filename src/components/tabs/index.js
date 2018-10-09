@@ -1,6 +1,6 @@
-import Tabs from './Tabs.jsx';
-import TabPane from './TabPane.jsx';
-import TabCollapse from './TabCollapse.jsx';
+import Tabs from './Tabs.js';
+import TabPane from './TabPane.js';
+import TabCollapse from './TabCollapse.js';
 Tabs.TabPane = TabPane;
 Tabs.TabCollapse = TabCollapse;
 

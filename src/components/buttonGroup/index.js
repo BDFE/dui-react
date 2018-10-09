@@ -1,4 +1,4 @@
-import ButtonGroup from './ButtonGroup.jsx';
+import ButtonGroup from './ButtonGroup.js';
 // Button.Group = ButtonGroup;
 
 export default ButtonGroup;
